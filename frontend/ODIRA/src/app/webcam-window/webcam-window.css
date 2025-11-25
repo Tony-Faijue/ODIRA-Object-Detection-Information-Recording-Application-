@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+.heading{
+@apply text-3xl;
+}
+.camera-toggle-btn{
+    @apply bg-emerald-300  rounded-lg shadow-lg shadow-slate-800 hover:shadow-lg hover:shadow-slate-300 hover:bg-gray-500 px-4 py-2;
+}
+.capture-btn{
+    @apply bg-emerald-300  rounded-lg shadow-lg shadow-slate-800 hover:shadow-lg hover:shadow-slate-300 hover:bg-gray-500 px-4 py-2;
+}
+.webcam-grid{
+    @apply grid grid-rows-2;
+}
+.webcam-window{
+    @apply block w-full h-full border-t-2 border-b-2 border-t-purple-600 border-b-purple-600;
+}
+.img-size{
+    @apply w-full h-full;
+}

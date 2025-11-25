@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { WebcamWindow } from "../webcam-window/webcam-window";
 
 @Component({
   selector: 'app-odira',
-  imports: [],
+  imports: [WebcamWindow],
   templateUrl: './odira.html',
   styleUrl: './odira.css',
 })
