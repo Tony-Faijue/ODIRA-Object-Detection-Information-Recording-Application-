@@ -1,0 +1,98 @@
+<div class="w-full settings-grid settings-border">
+  <div class="grid grid-rows-1 justify-items-center">
+    <h1 class="heading">Settings</h1>
+  </div>
+  <div class="settings-container">
+    <div class="settings-background space-x-4">
+      <!-- Object Detection Threshold -->
+      <p>Object Detection Threshold</p>
+      <div>
+        <input
+          type="range"
+          min="0.0"
+          max="1.0"
+          step="0.01"
+          class="slider w-3/4"
+          id="obj_thresh"
+          [(ngModel)]="objThresh"
+        />
+      </div>
+      <div class="last-column">
+        <p>{{ objThresh() }}</p>
+        <div class="tooltip group">
+          <div class="grid grid-cols-1 justify-items-center mt-0.5">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <span class="tooltip-text arrow"
+            ><p>
+              Slide to lower values to detect objects with low certainty. Slide to higher values to
+              detect objects with higher certainty.
+            </p></span
+          >
+        </div>
+      </div>
+      <!-- NMS Threshold -->
+      <p>NMS Threshold</p>
+      <div>
+        <input
+          type="range"
+          min="0.0"
+          max="1.0"
+          step="0.01"
+          class="slider w-3/4"
+          id="nms_thresh"
+          [(ngModel)]="nmsThresh"
+        />
+      </div>
+      <div class="last-column">
+        <p>{{ nmsThresh() }}</p>
+        <div class="tooltip group">
+          <div class="grid grid-cols-1 justify-items-center mt-0.5">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <span class="tooltip-text arrow"
+            ><p>
+              Slide to lower values to reduce redundant detections (multiple boxes for the same
+              object). Slide to a higher values to allow detection of distinct objects in
+              overlapping boundaries.
+            </p></span
+          >
+        </div>
+      </div>
+      <div class="justify-items-center grid grid-row-1 col-span-3">
+        <p>Categories</p>
+      </div>
+      <div class="list">
+        <div
+          class="grid grid-cols-1 justify-items-center border-2 border-amber-50 w-full h-[150px] overflow-y-scroll"
+        >
+          <div class="border-2 border-pink-200 w-1/2">
+            <div class="space-x-4">
+              <input
+                type="checkbox"
+                id="all"
+                name="all"
+                [(ngModel)]="selectAllChecked"
+                (change)="toggleAll()"
+              />
+              <label for="all">Select All</label>
+            </div>
+            <!-- Category Items -->
+            @for (category of categories; track category.id){
+            <div class="space-x-4">
+              <input
+                type="checkbox"
+                id="{{ category.id }}"
+                name="{{ category.id }}"
+                [(ngModel)]="category.checked"
+                (change)="updateSelectAllChecked()"
+              />
+              <label for="{{ category.id }}">{{ category.label }}</label>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

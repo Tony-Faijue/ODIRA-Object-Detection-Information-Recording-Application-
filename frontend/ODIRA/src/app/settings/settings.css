@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+.settings-grid{
+    @apply grid grid-rows-1;
+}
+.settings-border{
+    @apply border-2 border-green-300 space-y-4;
+}
+.heading{
+    @apply text-3xl;
+}
+.settings-container{
+    @apply border-2 border-yellow-200 bg-gray-700 p-3;
+}
+.settings-background{
+    @apply bg-slate-800 border-2 border-purple-400 grid-cols-3 grid grid-rows-6 p-2;
+}
+.last-column{
+    @apply grid grid-cols-2;
+}
+.list{
+    @apply col-span-3 row-span-3 border-3 border-black;
+}
+.slider {
+    @apply w-full h-[15px] rounded-md bg-gray-300 outline-none transition-opacity duration-200 hover:opacity-100 accent-blue-700;
+}
+.tooltip{
+    @apply relative inline-block cursor-pointer; 
+}
+.tooltip-text{
+    @apply group-hover:visible invisible absolute z-10 bg-gray-700 text-white text-center p-1 rounded-md  right-5 h-auto w-45;
+    @apply top-full left-1/2 transform -translate-x-1/2;
+}
+.arrow::after{
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
