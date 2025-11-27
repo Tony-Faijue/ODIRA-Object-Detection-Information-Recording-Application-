@@ -4,7 +4,7 @@
     @apply bg-blue-600 mb-4 pb-4 pt-2 max-w-full grid grid-rows-1;
 }
 .odira-content{
-    @apply mx-auto p-4 border-2 border-black grid grid-cols-3 grid-rows-6;
+    @apply mx-auto p-4 border-2 border-black grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-6;
 }
 .heading{
     @apply text-4xl rounded-2xl  hover:bg-blue-700 p-4;
@@ -16,10 +16,10 @@
     @apply border-2 border-slate-200 col-span-2 row-span-6;
 }
 .right-column{
-    @apply border-2 border-slate-200 col-span-1 row-span-6;
+    @apply border-2 border-slate-200 col-span-1 row-span-6 grid grid-rows-18;
 }
-.webcam-component{
-    @apply border-2 border-red-600;
+.settings-component{
+    @apply border-2 border-blue-400 row-span-6;
 }
 .result-component{
     @apply border-2 border-blue-600;
