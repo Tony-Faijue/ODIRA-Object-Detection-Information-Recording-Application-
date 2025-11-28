@@ -3,11 +3,21 @@
 .heading{
 @apply text-3xl;
 }
-.camera-toggle-btn{
-    @apply bg-emerald-300  rounded-lg shadow-lg shadow-slate-800 hover:shadow-lg hover:shadow-slate-300 hover:bg-gray-500 px-4 py-2;
+
+.camera-toggle-btn-on-bg{
+    @apply w-[125px] lg:w-[175px] bg-emerald-300 rounded-4xl hover:shadow-md hover:shadow-emerald-300 hover:bg-emerald-500 px-4 py-4 flex justify-end items-center;
+}
+.camera-toggle-btn-on{
+    @apply bg-white rounded-full w-8 h-8;
+}
+.camera-toggle-btn-off-bg{
+    @apply w-[125px] lg:w-[175px] bg-black rounded-4xl hover:shadow-md hover:shadow-white px-4 py-4;
+}
+.camera-toggle-btn-off{
+    @apply bg-white rounded-full w-8 h-8;
 }
 .capture-btn{
-    @apply bg-emerald-300  rounded-lg shadow-lg shadow-slate-800 hover:shadow-lg hover:shadow-slate-300 hover:bg-gray-500 px-4 py-2;
+    @apply bg-emerald-300 w-[175px] lg:w-[200px] rounded-lg hover:shadow-lg hover:shadow-emerald-300 hover:bg-emerald-500 px-4 py-2;
 }
 .webcam-grid{
     @apply grid grid-rows-2;

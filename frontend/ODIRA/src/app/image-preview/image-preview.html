@@ -8,7 +8,13 @@
     </div>
   </div>
 
+  @if(webcamService.previewImage()){
+  <div class="border-4 border-purple-700 h-full">
+    <img [src]="webcamService.previewImage()" class="img-size" alt="" />
+  </div>
+  } @else{
   <div class="border-4 border-purple-700 h-full">
     <img src="images/camera-off.jpg" class="img-size" alt="" />
   </div>
+  }
 </div>
