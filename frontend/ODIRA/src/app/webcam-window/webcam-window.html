@@ -3,9 +3,15 @@
     <h1 class="heading">Webcam</h1>
   </div>
   <div class="mt-2 mb-2">
-    <button class="camera-toggle-btn" (click)="toggleCamera()">
-      {{ webcamService.showWebcam() ? 'Stop Camera' : 'Toggle Camera' }}
+    @if(webcamService.showWebcam() == true){
+    <button class="camera-toggle-btn-on-bg" (click)="toggleCamera()">
+      <div class="camera-toggle-btn-on"></div>
     </button>
+    } @else{
+    <button class="camera-toggle-btn-off-bg" (click)="toggleCamera()">
+      <div class="camera-toggle-btn-off"></div>
+    </button>
+    }
   </div>
   @if (webcamService.showWebcam() == true){
   <webcam
@@ -30,6 +36,8 @@
   </div>
   }
   <div class="mt-2 mb-2">
-    <button class="capture-btn" (click)="webcamService.triggerSnapShot()">Caputre Image</button>
+    <button class="capture-btn" (click)="webcamService.triggerSnapShot()">
+      <i class="fa-solid fa-camera fa-3x"></i>
+    </button>
   </div>
 </div>

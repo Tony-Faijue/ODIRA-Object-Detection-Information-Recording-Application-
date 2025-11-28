@@ -5,10 +5,10 @@
       <i class="fa-solid fa-upload fa-2x"></i>
     </div>
   </div>
-  <form action="">
+  <form [formGroup]="imageData" (ngSubmit)="onFormSubmit()">
     <div class="upload-img-div">
       <label for="image_upload" class="heading">Upload Image</label>
-      <input type="file" class="input-image" />
+      <input type="file" class="input-image" (change)="onFileSelected($event)" required />
       <button type="submit" class="upload-btn">Submit</button>
     </div>
   </form>
