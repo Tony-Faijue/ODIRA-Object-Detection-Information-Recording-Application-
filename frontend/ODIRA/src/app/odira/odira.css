@@ -21,6 +21,12 @@
 .settings-component{
     @apply border-2 border-blue-400 row-span-6;
 }
+.upload-image-component{
+    @apply border-2 border-amber-600 row-span-4;
+}
+.image-preview-component{
+    @apply border-2 border-lime-500 row-span-8;
+}
 .result-component{
     @apply border-2 border-blue-600;
 }
