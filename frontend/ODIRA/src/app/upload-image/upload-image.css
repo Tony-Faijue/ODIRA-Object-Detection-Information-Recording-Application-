@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+.upload-grid{
+    @apply grid grid-cols-1;
+}
+.upload-border{
+    @apply  border-2 border-amber-500 space-y-4 h-full;
+}
+.upload-img-div{
+    @apply border-purple-400 border-2 grid grid-cols-1 justify-items-center gap-4 py-4 px-2
+}
+.input-image{
+    @apply bg-teal-400 hover:bg-teal-500 rounded-md hover:shadow hover:shadow-teal-200 w-full h-full p-2;
+}
+.upload-btn{
+        @apply w-45 bg-emerald-500 hover:bg-emerald-600 hover:shadow-emerald-400 text-white font-semibold py-3 rounded-lg shadow-md transition-all duration-200;
+
+}
+.logo-space{
+    @apply border-2 border-red-600 space-x-2 p-2 text-slate-100;
+}
+.heading{
+    @apply text-3xl;
+}

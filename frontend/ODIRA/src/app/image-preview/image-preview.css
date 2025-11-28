@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+.preview-grid{
+    @apply grid grid-rows-[1fr_2fr] border-2 border-red-600 p-2 h-auto;
+}
+.preview-flex{
+    @apply flex flex-col h-full;
+}
+.img-size{
+    @apply w-full h-full;
+}
+.heading{
+    @apply text-3xl place-self-center;
+}
