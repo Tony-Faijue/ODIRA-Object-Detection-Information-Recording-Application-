@@ -40,3 +40,6 @@
     border-style: solid;
     border-color: black transparent transparent transparent;
 }
+.update-btn{
+    @apply w-45 bg-emerald-500 hover:bg-emerald-600 hover:shadow-emerald-400 text-white font-semibold py-3 rounded-lg shadow-md transition-all duration-200;
+}
