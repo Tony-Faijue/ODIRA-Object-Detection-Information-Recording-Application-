@@ -14,7 +14,9 @@
           step="0.01"
           class="slider w-3/4"
           id="obj_thresh"
-          [(ngModel)]="objThresh"
+          name="obj_thresh_input"
+          [ngModel]="objThresh()"
+          (ngModelChange)="objThresh.set($event)"
         />
       </div>
       <div class="last-column">
@@ -41,7 +43,9 @@
           step="0.01"
           class="slider w-3/4"
           id="nms_thresh"
-          [(ngModel)]="nmsThresh"
+          name="nms_thresh_input"
+          [ngModel]="nmsThresh()"
+          (ngModelChange)="nmsThresh.set($event)"
         />
       </div>
       <div class="last-column">
