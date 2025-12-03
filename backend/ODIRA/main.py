@@ -8,7 +8,7 @@ nms_threshold = 0.2
 
 #File path to the image
 #Change File to blob type for easier processing
-img_file = "images/fruits.jpg"
+img_file = "images/car-small-size.jpg"
 img = cv2.imread(img_file)
 
 #Stores the class names of the coco.names file
@@ -47,7 +47,7 @@ for gname, names in CATEGORY_GROUPS.items():
     group_to_ids[gname] = ids
 
 #Where the user selects the groups
-selected_groups = {"people"}
+selected_groups = {"vehicles"}
 
 #issue when none is selected, make sure to make the default all selected
 #Need to handle the error when wrong items is detected or warn the user that an item may be wrongly detected
