@@ -3,10 +3,11 @@ import { WebcamWindow } from "../webcam-window/webcam-window";
 import { Settings } from "../settings/settings";
 import { UploadImage } from "../upload-image/upload-image";
 import { ImagePreview } from "../image-preview/image-preview";
+import { ResultComponent } from '../result-component/result-component';
 
 @Component({
   selector: 'app-odira',
-  imports: [WebcamWindow, Settings, UploadImage, ImagePreview],
+  imports: [WebcamWindow, Settings, UploadImage, ImagePreview, ResultComponent],
   templateUrl: './odira.html',
   styleUrl: './odira.css',
 })

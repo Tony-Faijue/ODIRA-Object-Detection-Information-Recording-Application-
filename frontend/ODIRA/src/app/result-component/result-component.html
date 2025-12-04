@@ -1,0 +1,14 @@
+<div>
+  @if(processedImageUrl()){
+  <h2>Process Image:</h2>
+  <img [src]="processedImageUrl()" />
+  <h3>Detection Results:</h3>
+  <ul>
+    @for (item of resultsList(); track item.item){
+    <li>{{ item.item }}: {{ item.count }} (Total: {{ item.total_count_of_objects }})</li>
+    }
+  </ul>
+  }@else {
+  <p>No processed image data available yet.</p>
+  }
+</div>
