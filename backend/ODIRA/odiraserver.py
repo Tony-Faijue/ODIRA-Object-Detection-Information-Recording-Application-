@@ -16,8 +16,12 @@ from collections import Counter
 Manages the server initialization and basic configurations
 """
 app = FastAPI()
+#To run server
+# fastapi dev odiraserver.py --port 9998
 origins = [
-    "http://127.0.0.1:9997"
+    "http://localhost:4200",
+    "http://127.0.0.1:9998"
+
 ]
 #Middleware for Routes
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
@@ -170,11 +174,25 @@ def detect_objects_from_image(img, settings_data_model:SettingsData):
                 x, y, w, h = rects[i]
                 cid = class_Ids[i]
                 score = scores[i]
+                class_name = class_names[cid - 1]
                 kept_class_ids.append(class_names[cid - 1])
 
                 cv2.rectangle(img, (x, y), (x + w, y + h), color=(0, 255, 0), thickness=2)
-                label = f"{class_names[cid - 1].upper()} {round(score * 100, 2)}%"
-                cv2.putText(img, label, (x + 5, y + 25), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+                label = f"{class_name.upper()} {round(score * 100, 2)}%"
+
+                font = cv2.FONT_HERSHEY_COMPLEX_SMALL
+                font_scale = 1
+                font_thickness = 1
+
+                (text_width, text_height), baseline = cv2.getTextSize(label, font, font_scale, font_thickness)
+
+                while text_width > w - 10 and font_scale > 0.1:
+                    font_scale -= 0.05
+                    (text_width, text_height), baseline = cv2.getTextSize(label, font, font_scale, font_thickness)
+
+                label_y_pos = y - 10 if y - 10 > 10 else y + text_height + 10
+
+                cv2.putText(img, label, (x + 5, label_y_pos), font, font_scale, (0, 255, 0), font_thickness, cv2.LINE_AA)
 
             # Total counts and counts per class
             total_count = len(kept_class_ids)
@@ -220,12 +238,14 @@ async def process_image_upload(file: UploadFile = File(...), settings: str = For
     #Save the processed image to disk with unique id
     cv2.imwrite(save_path, processed_img)
 
+    base_url = "http://127.0.0.1:9998"
+
     response_object = ImageFile(
         image_file_id=image_id,
         content_type="image/png",
         file_name=file.filename,
         results=results_data,
-        image_url=f"/api/images/{image_id}"
+        image_url=f"{base_url}/api/image/{image_id}"
     )
     return response_object
 

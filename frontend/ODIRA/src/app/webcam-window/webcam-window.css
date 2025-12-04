@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 .heading{
-@apply text-3xl;
+@apply text-5xl;
 }
 
 .camera-toggle-btn-on-bg{
@@ -11,7 +11,7 @@
     @apply bg-white rounded-full w-8 h-8;
 }
 .camera-toggle-btn-off-bg{
-    @apply w-[125px] lg:w-[175px] bg-black rounded-4xl hover:shadow-md hover:shadow-white px-4 py-4;
+    @apply w-[125px] lg:w-[175px] bg-black rounded-4xl hover:shadow-md hover:shadow-white px-4 py-4 flex items-center;
 }
 .camera-toggle-btn-off{
     @apply bg-white rounded-full w-8 h-8;
@@ -23,7 +23,7 @@
     @apply grid grid-rows-2;
 }
 .webcam-window{
-    @apply block w-full h-full border-t-2 border-b-2 border-t-purple-600 border-b-purple-600;
+    @apply block w-full h-full;
 }
 .img-size{
     @apply w-full h-full;

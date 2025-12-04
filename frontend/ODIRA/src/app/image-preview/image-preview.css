@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 .preview-grid{
-    @apply grid grid-rows-[1fr_2fr] border-2 border-red-600 p-2 h-auto;
+    @apply grid grid-rows-[1fr_2fr] p-2 h-auto;
 }
 .preview-flex{
     @apply flex flex-col h-full;
@@ -12,5 +12,5 @@
     @apply text-3xl place-self-center;
 }
 .process-img-btn{
-    @apply container place-self-center w-3/4 h-[50px] bg-emerald-300 hover:bg-emerald-500 text-white text-sm font-semibold py-3 rounded-lg shadow-md transition-all duration-200;
+    @apply flex items-center justify-center w-full h-[50px] bg-emerald-300 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg shadow-md transition-all duration-200 px-2;
 }
