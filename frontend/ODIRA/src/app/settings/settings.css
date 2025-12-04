@@ -3,16 +3,16 @@
     @apply grid grid-rows-1;
 }
 .settings-border{
-    @apply border-2 border-green-300 space-y-4;
+    @apply space-y-4;
 }
 .heading{
     @apply text-3xl;
 }
 .settings-container{
-    @apply border-2 border-yellow-200 bg-gray-700 p-3;
+    @apply bg-slate-800 p-3;
 }
 .settings-background{
-    @apply bg-slate-800 border-2 border-purple-400 grid-cols-3 grid grid-rows-6 p-2;
+    @apply bg-slate-800 grid-cols-3 grid grid-rows-6 p-2;
 }
 .last-column{
     @apply grid grid-cols-2;
