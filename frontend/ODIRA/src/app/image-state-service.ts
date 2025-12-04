@@ -2,10 +2,11 @@ import { Injectable, signal } from '@angular/core';
 
 
 export interface FileImage{
-  image_file_id: number,
+  image_file_id: string,
   content_type: string,
   file_name: string,
-  results: Record<string, number>,
+  results: {item:string; count:number; total_count_of_objects:number}[];
+  image_url: string;
 }
 
 @Injectable({
@@ -18,11 +19,6 @@ export class ImageStateService {
    * Stores the data of the processed image
    */
 
-  processedImage = signal<FileImage>({
-    image_file_id: 0,
-    content_type: "",
-    file_name: "",
-    results: {},
-  });
+  processedImage = signal<FileImage | null>(null);
 
 }

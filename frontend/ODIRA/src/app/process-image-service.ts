@@ -14,9 +14,8 @@ export class ProcessImageService {
   webcamService = inject(WebcamService);
   settingsService = inject(SettingsService);
 
-  //Placeholder api endpoints
-  private FILE_URL = "http://127.0.0.1:9998/api/process-images";
-  private WEBCAM_URL = "http://127.0.0.1:9998/api/process-webcam-images";
+  //Placeholder api endpoint
+  private FILE_URL = "http://127.0.0.1:9997/api/process-image";
 
 
   /**
@@ -33,8 +32,7 @@ export class ProcessImageService {
     formData.append('settings', JSON.stringify(currentSettings));
 
     //Select the corresponding api url based of file or webcam image
-    const isWebcam = this.webcamService.isWebcamImage();
-    const url = isWebcam ? this.WEBCAM_URL : this.FILE_URL;
+    const url = this.FILE_URL;
     return this.http.post<FileImage>(url, formData);
  }
 
