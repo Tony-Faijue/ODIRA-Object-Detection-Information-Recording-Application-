@@ -15,7 +15,7 @@ export class ProcessImageService {
   settingsService = inject(SettingsService);
 
   //Placeholder api endpoint
-  private FILE_URL = "http://127.0.0.1:9997/api/process-image";
+  private FILE_URL = "http://127.0.0.1:9998/api/process-image";
 
 
   /**
