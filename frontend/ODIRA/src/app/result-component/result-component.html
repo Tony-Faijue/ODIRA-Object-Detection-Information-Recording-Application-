@@ -1,14 +1,72 @@
-<div>
+<div class="bg-gray-600 px-2">
+  <div><h1 class="text-center text-4xl">Results</h1></div>
+
   @if(processedImageUrl()){
-  <h2>Process Image:</h2>
-  <img [src]="processedImageUrl()" />
-  <h3>Detection Results:</h3>
-  <ul>
-    @for (item of resultsList(); track item.item){
-    <li>{{ item.item }}: {{ item.count }} (Total: {{ item.total_count_of_objects }})</li>
-    }
-  </ul>
-  }@else {
-  <p>No processed image data available yet.</p>
+  <h2 class="text-3xl p-2 text-center">Completed Processed Image</h2>
+  <div class="flex items-center justify-center border-2 border-black bg-slate-800 p-4">
+    <img [src]="processedImageUrl()" class="w-auto" />
+  </div>
+  <h3 class="text-center text-3xl">Detection Results:</h3>
+  <!-- Table for objects detected -->
+  <div class="flex justify-end">
+    <i class="fa-solid fa-check fa-3x text-green-500"></i>
+  </div>
+  <table>
+    <thead class="bg-blue-600">
+      <tr>
+        <th>Class</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of resultsList(); track item.item){
+      <tr>
+        <td class="capitalize text-center p-2">{{ item.item }}</td>
+        <td class="text-center p-2">{{ item.count }}</td>
+      </tr>
+      }
+      <!-- No objects detected -->
+      @empty{
+      <tr>
+        <td class="capitalize text-center p-2">No Class</td>
+        <td class="text-center p-2">0</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <!--Error message no objects is detected  -->
+  @if(resultsList().length == 0){
+  <div class="mt-4 pb-2">
+    <div class="flex justify-end">
+      <i class="fa-solid fa-circle-xmark text-red-600 fa-2x"></i>
+    </div>
+    <p class="text-red-600 font-bold text-2xl text-center">
+      No objects were detected from the image
+    </p>
+    <p class="text-red-600 font-bold text-2xl text-center">Solutions:</p>
+    <ul class="flex flex-col items-center list-disc">
+      <li>Slide threshold values to increase detection.</li>
+      <li>
+        Select the appropriate category/categories that the object(s) belong to.
+        <ul class="flex flex-col items-center">
+          <li class="underline">List of items in each category</li>
+        </ul>
+      </li>
+      <li>Make sure the object(s) are visible in the image.</li>
+    </ul>
+  </div>
+  }
+  <!-- Display Total Objects only if more than 0 -->
+  @for (item of resultsList(); track item.item; let idx = $index){ @if($first){
+  <p class="text-center text-3xl text-emerald-500 py-4">
+    Total Objects Detected in the Image: {{ item.total_count_of_objects }}
+  </p>
+  } } }
+  <!-- No image url data -->
+  @else {
+  <div class="flex items-center justify-center">
+    <p class="text-xl pb-4">No processed image data available yet.</p>
+  </div>
   }
 </div>
