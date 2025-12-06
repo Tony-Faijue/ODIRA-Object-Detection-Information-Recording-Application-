@@ -115,7 +115,7 @@ def detect_objects_from_image(img, settings_data_model:SettingsData):
     """
     Method to perform object detection when given an image and setting for thresholds and categories
     :param img:
-    :param settings_data_model: the settings that contains threhsolds and categories
+    :param settings_data_model: the settings that contains thresholds and categories
     :return: results list and modified image array
     """
     #Access the thresholds/confidence from the pydantic model

@@ -15,7 +15,7 @@ export class Settings implements OnInit{
 
   categories: Category[] = [];
 
-  selectAllChecked:boolean = false;
+  selectAllChecked:boolean = true;
 
   //Signals fo UI display
   objThresh = signal(0.5);
@@ -52,8 +52,9 @@ export class Settings implements OnInit{
 
     this.objThresh.set(currentSettings.objThresh);
     this.nmsThresh.set(currentSettings.nmsThresh);
-    this.categories = currentSettings.categories;
-    this.updateSelectAllChecked();
+    //Set all categories checked by default
+    this.categories = currentSettings.categories.map(category => ({...category, checked:true}));
+    this.triggerCategoryUpdate();
   }
 
   /**

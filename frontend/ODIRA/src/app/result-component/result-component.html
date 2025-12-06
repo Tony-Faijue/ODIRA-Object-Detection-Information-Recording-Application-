@@ -8,9 +8,11 @@
   </div>
   <h3 class="text-center text-3xl">Detection Results:</h3>
   <!-- Table for objects detected -->
+  @if(resultsList().length !=0){
   <div class="flex justify-end">
     <i class="fa-solid fa-check fa-3x text-green-500"></i>
   </div>
+  }
   <table>
     <thead class="bg-blue-600">
       <tr>
@@ -48,7 +50,7 @@
     <ul class="flex flex-col items-center list-disc">
       <li>Slide threshold values to increase detection.</li>
       <li>
-        Select the appropriate category/categories that the object(s) belong to.
+        Select the appropriate category/categories that the object(s) in the image belong to.
         <ul class="flex flex-col items-center">
           <li class="underline">List of items in each category</li>
         </ul>
