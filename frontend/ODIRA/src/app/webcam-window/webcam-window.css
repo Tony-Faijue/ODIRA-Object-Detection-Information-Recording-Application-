@@ -19,6 +19,9 @@
 .capture-btn{
     @apply bg-emerald-300 w-[175px] lg:w-[200px] rounded-lg hover:shadow-lg hover:shadow-emerald-300 hover:bg-emerald-500 px-4 py-2;
 }
+.capture-btn-gray{
+    @apply bg-gray-400 w-[175px] lg:w-[200px] rounded-lg hover:bg-gray-500 px-4 py-2;
+}
 .webcam-grid{
     @apply grid grid-rows-2;
 }

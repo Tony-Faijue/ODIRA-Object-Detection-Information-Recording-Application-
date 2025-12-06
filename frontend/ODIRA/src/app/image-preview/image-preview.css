@@ -14,3 +14,6 @@
 .process-img-btn{
     @apply flex items-center justify-center w-full h-[50px] bg-emerald-300 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg shadow-md transition-all duration-200 px-2;
 }
+.process-img-btn-gray{
+    @apply flex items-center justify-center w-full h-[50px] bg-gray-400 hover:bg-gray-500 text-white text-sm font-semibold rounded-lg transition-all duration-200 px-2;
+}
