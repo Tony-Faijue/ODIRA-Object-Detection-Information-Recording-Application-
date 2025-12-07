@@ -81,7 +81,7 @@ CATEGORY_GROUPS = {
     "sports": {"sports ball","frisbee","kite","baseball bat","baseball glove","skateboard", "snowboard", "surfboard","tennis racket", "skis"},
     "street_items": {"traffic light","stop sign","parking meter","street sign","bench","fire hydrant"},
     "electronics": {"tv","laptop","cell phone","remote","keyboard","mouse"},
-    "miscellaneous": {"hair drier", "toothbrush", "hairbrush", "teddy bear", "scissors"}
+    "miscellaneous": {"hair drier", "toothbrush", "hair brush", "teddy bear", "scissors", "book"}
 }
 # Logic to assign ids to each category and ids for each item/name per category
 

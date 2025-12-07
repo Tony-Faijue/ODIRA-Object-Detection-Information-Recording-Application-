@@ -40,10 +40,19 @@ export class SettingsService {
   private settingsSubject = new BehaviorSubject<SettingsData>(this.initialSettings);
   public currentSettings: Observable<SettingsData> = this.settingsSubject.asObservable();
 
+  /**
+   * 
+   * @param newSettings 
+   * Update settings when a change occurs
+   */
   updateSettings(newSettings: SettingsData): void{
     this.settingsSubject.next(newSettings);
   }
 
+  /**
+   * 
+   * @returns the current settings data
+   */
   currentSettingsSnapshot(): SettingsData {
     return this.settingsSubject.value;
   }
