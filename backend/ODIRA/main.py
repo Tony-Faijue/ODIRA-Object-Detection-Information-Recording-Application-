@@ -2,6 +2,15 @@ import cv2
 import numpy as np
 from collections import Counter
 
+"""
+Online Sources Used
+https://www.computervision.zone/courses/object-detection-mobile-net-ssd/?nsl_bypass_cache=00e43a010f43958bdabf63ca4b399085
+https://www.askpython.com/resources/draw-bounding-boxes-image
+https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API
+"""
+
+
+
 #Threshold & NMS Threshold (Reduce Duplication for same object detected)
 thresh = 0.5
 nms_threshold = 0.2
