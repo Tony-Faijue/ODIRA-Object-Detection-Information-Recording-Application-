@@ -9,3 +9,6 @@ th{
 td{
     @apply border-2 border-black;
 }
+.hover-link{
+    @apply text-blue-500;
+}

@@ -16,12 +16,20 @@ export class UploadImage {
     imageFile: new FormControl<File | null>(null),
   });
 
+  /**
+   * 
+   * @param event 
+   * Gets the selected file by the user
+   */
   public onFileSelected(event: Event){
     let input = event.target as HTMLInputElement;
     let file = input.files?.[0] ?? null;
     this.imageData.get('imageFile')!.setValue(file);
   }
 
+  /**
+   * Submits the selected file by the user to the image preview component
+   */
   public async onFormSubmit():Promise<void>{
     let file: File | null = this.imageData.value.imageFile;
     this.webcamService.imageFileName.set(file?.name ?? "text_image");

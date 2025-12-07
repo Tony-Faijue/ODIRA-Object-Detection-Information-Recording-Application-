@@ -12,6 +12,9 @@ export class WebcamWindow{
   //Inject Webcam Service
   webcamService = inject(WebcamService);
 
+  /**
+   * Toggle the webcam on and off
+   */
   public toggleCamera(){
     this.webcamService.toggleWebCam();
     if(this.webcamService.showWebcam()){

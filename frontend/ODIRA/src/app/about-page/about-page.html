@@ -1,0 +1,204 @@
+<div class="container max-w-full">
+  <!-- Main menu -->
+  <div class="nav-menu">
+    <div class="heading-items">
+      <a [routerLink]="['/']"><h1 class="heading">ODIRA</h1></a>
+      <a [routerLink]="['/about']"><h1 class="heading">ABOUT</h1></a>
+    </div>
+  </div>
+  <!-- Content -->
+  <div class="about-content">
+    <div class="left-column">
+      <div class="block-height">
+        <h1 class="sub-head">What is Objet Detection?</h1>
+        <p class="content mt-10">
+          Object detection is a computer vision technique that locates objects in digital images. It
+          consists of training computers to see as humans do, by recognizing and classifying objects
+          to semantic categories. Object localization is a technique used to determine the location
+          of specific objects by drawing a bounding box.
+        </p>
+      </div>
+      <div class="block-height">
+        <h1 class="sub-head">What is ODIRA?</h1>
+        <p class="content mt-10">
+          ODIRA stands for Object Detection Information Recording Application. ODIRA uses the
+          MobileNet SSD v3 detection model that is trained on the COCO dataset. This application
+          allows users to upload an image or take a picture with their webcam. Users can adjust the
+          settings parameters before processing to detect specific category of objects and apply
+          stricter or looser filtering. Once the image has been processed the application returns
+          information about what objects were detected, how many per class and a total count of
+          objects detected.
+        </p>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="block-height space-y-6">
+        <h1 class="sub-head">How to Use ODIRA?</h1>
+        <p class="content">
+          To use ODIRA, the user must either use the webcam to take a picture or upload an existing
+          image. The user can then adjust the settings parameters. Object Threshold parameter
+          determines the model's certainty. (Higher values for High certainty and Lower Value for
+          Low certainty). NMS (Non-Maximum Supression Threshold) parameter determines how boundary
+          boxes of objects should overlap. (Higher values for more overlap and Lower values for less
+          overlap). Once the image has been submitted the user can click the process button to
+          process the image. The results will be displayed in the Results sections.
+        </p>
+      </div>
+      <div class="block-height space-y-2">
+        <h1 class="sub-head">Categories</h1>
+        <div class="flex flex-row p-4">
+          <div class="grid grid-cols-5 gap-4 w-full items-start content p-2">
+            <!-- Categories -->
+            <div class="space-y-4 container">
+              <h2>Vehicles</h2>
+              <ul>
+                <li>Bicycle</li>
+                <li>Car</li>
+                <li>Motorcycle</li>
+                <li>Bus</li>
+                <li>Train</li>
+                <li>Truck</li>
+                <li>Boat</li>
+                <li>Airplane</li>
+              </ul>
+            </div>
+
+            <div class="space-y-4 container">
+              <h2>Clothes/Accessories</h2>
+              <ul>
+                <li>Backpack</li>
+                <li>Handbag</li>
+                <li>Suitcase</li>
+                <li>Tie</li>
+                <li>Hat</li>
+                <li>Eye Glasses</li>
+                <li>Shoe</li>
+                <li>Umbrella</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Animals</h2>
+              <ul>
+                <li>Bird</li>
+                <li>Cat</li>
+                <li>Dog</li>
+                <li>Horse</li>
+                <li>Sheep</li>
+                <li>Cow</li>
+                <li>Elephant</li>
+                <li>Bear</li>
+                <li>Zebra</li>
+                <li>Giraffe</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Furniture</h2>
+              <ul>
+                <li>Chair</li>
+                <li>Couch</li>
+                <li>Bed</li>
+                <li>Mirror</li>
+                <li>Dining Table</li>
+                <li>Window</li>
+                <li>Desk</li>
+                <li>Potted Plant</li>
+                <li>Toilet</li>
+                <li>Door</li>
+                <li>Sink</li>
+                <li>Clock</li>
+                <li>Vase</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Food</h2>
+              <ul>
+                <li>Banana</li>
+                <li>Apple</li>
+                <li>Orange</li>
+                <li>Pizza</li>
+                <li>Sandwhich</li>
+                <li>Broccoli</li>
+                <li>Carrot</li>
+                <li>Hot Dog</li>
+                <li>Donut</li>
+                <li>Cake</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Kitchen</h2>
+              <ul>
+                <li>Bottle</li>
+                <li>Plate</li>
+                <li>wine Glass</li>
+                <li>Cup</li>
+                <li>Fork</li>
+                <li>Knife</li>
+                <li>Spoon</li>
+                <li>Bowl</li>
+                <li>Microwave</li>
+                <li>Oven</li>
+                <li>Toaster</li>
+                <li>Refrigerator</li>
+                <li>Blender</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Sports Items</h2>
+              <ul>
+                <li>Sports Ball</li>
+                <li>Frisbee</li>
+                <li>Kite</li>
+                <li>Baseball Bat</li>
+                <li>Baseball Glove</li>
+                <li>Skateboard</li>
+                <li>Snowboard</li>
+                <li>Surfboard</li>
+                <li>Tennis Racket</li>
+                <li>Skis</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Street Items</h2>
+              <ul>
+                <li>Traffic Light</li>
+                <li>Stop Sign</li>
+                <li>Parking Meter</li>
+                <li>Street Sign</li>
+                <li>Bench</li>
+                <li>Fire Hydrant</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Electronics</h2>
+              <ul>
+                <li>TV</li>
+                <li>Laptop</li>
+                <li>Cell Phone</li>
+                <li>Remote</li>
+                <li>Keyboard</li>
+                <li>Mouse</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>Miscellaneous</h2>
+              <ul>
+                <li>Hair Drier</li>
+                <li>Hair Brush</li>
+                <li>Toothbrush</li>
+                <li>Teddy Bear</li>
+                <li>Book</li>
+                <li>Scissors</li>
+              </ul>
+            </div>
+            <div class="space-y-4 container">
+              <h2>People</h2>
+              <ul>
+                <li>Person</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

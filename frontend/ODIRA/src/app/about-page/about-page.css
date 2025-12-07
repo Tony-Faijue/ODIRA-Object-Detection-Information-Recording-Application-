@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+.nav-menu{
+    @apply bg-blue-600 mb-4 pb-4 pt-2 max-w-full grid grid-rows-1;
+}
+.heading{
+    @apply text-4xl rounded-2xl  hover:bg-blue-700 p-4;
+}
+.heading-items{
+    @apply place-self-center flex flex-row space-x-12;
+}
+.left-column{
+    @apply  flex flex-col items-center space-y-8 p-4 h-auto;
+}
+.right-column{
+    @apply flex flex-col items-center space-y-8 p-4 h-auto;
+}
+.about-content{
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-4 h-auto;
+}
+.sub-head{
+    @apply text-3xl text-center;
+}
+.content{
+    @apply text-center border-2 border-blue-300;
+}
+.block-height{
+    @apply border-2 border-white p-2 grow;
+}
+h2{
+    @apply text-sm text-nowrap text-center;
+}
+ul{
+    @apply flex flex-col list-disc text-xs pl-5;
+}

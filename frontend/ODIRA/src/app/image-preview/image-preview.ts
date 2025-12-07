@@ -21,11 +21,17 @@ export class ImagePreview {
   imageFileName!: string;
 
 
+  /**
+   * Method to hold the preview image and the dataurl
+   */
   getImagePreview(){
     this.imageDataURL = this.webcamService.previewImage();
     this.imageFileName = this.webcamService.imageFileName();
   }
   
+  /**
+   * Sends the preview image to be processed to the server
+   */
   processImageResults() {
     this.getImagePreview();
     this.processimageService.uploadFileToServer(this.imageDataURL, this.imageFileName)
