@@ -12,6 +12,16 @@ import uuid
 from collections import Counter
 
 """
+Online Sources Used
+https://www.computervision.zone/courses/object-detection-mobile-net-ssd/?nsl_bypass_cache=00e43a010f43958bdabf63ca4b399085
+https://www.askpython.com/resources/draw-bounding-boxes-image
+https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API
+https://www.youtube.com/watch?v=rvFsGRvj9jo
+https://www.geeksforgeeks.org/python/create-a-directory-in-python/
+https://fastapi.tiangolo.com/advanced/custom-response/#fileresponse
+"""
+
+"""
 --------Fast API Setup---------
 Manages the server initialization and basic configurations
 """
