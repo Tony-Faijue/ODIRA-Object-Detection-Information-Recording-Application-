@@ -13,9 +13,10 @@ from collections import Counter
 
 """
 Online Sources Used
+https://eranfeit.net/ssd-mobilenet-v3-object-detection-explained-for-beginners/
+https://docs.opencv.org/3.4/d6/d0f/group__dnn.html 
 https://www.computervision.zone/courses/object-detection-mobile-net-ssd/?nsl_bypass_cache=00e43a010f43958bdabf63ca4b399085
 https://www.askpython.com/resources/draw-bounding-boxes-image
-https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API
 https://www.youtube.com/watch?v=rvFsGRvj9jo
 https://www.geeksforgeeks.org/python/create-a-directory-in-python/
 https://fastapi.tiangolo.com/advanced/custom-response/#fileresponse
@@ -36,9 +37,16 @@ origins = [
 #Middleware for Routes
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
+#Source for creating a directory
+#: https://www.geeksforgeeks.org/python/create-a-directory-in-python/
+
+
 #Store the new processed images in a local directory
 PROCESSED_IMAGE_DIR = "processed_images"
 os.makedirs(PROCESSED_IMAGE_DIR, exist_ok=True)
+
+#References used for setting FASTAPI endpoints
+#: https://www.youtube.com/watch?v=rvFsGRvj9jo
 
 
 """
@@ -71,6 +79,8 @@ class SettingsData(BaseModel):
 --------Object Detection SetUp---------
 Loads configuration files and initializes the OpenCV DNN Model with SSD MobileNet v3
 """
+
+#Source used for Object Threshold Setup: https://eranfeit.net/ssd-mobilenet-v3-object-detection-explained-for-beginners/
 
 #Store the class names from the coco names file
 class_names = []
@@ -132,6 +142,7 @@ def detect_objects_from_image(img, settings_data_model:SettingsData):
     thresh = settings_data_model.objThresh
     nms_threshold = settings_data_model.nmsThresh
 
+
     #Determine which class Ids are allowed based on the user's checked category groups
     allowed_ids = set()
     for category in settings_data_model.categories:
@@ -140,6 +151,10 @@ def detect_objects_from_image(img, settings_data_model:SettingsData):
             category_group_ids = group_to_ids.get(category.name)
             if category_group_ids:
                 allowed_ids.update(category_group_ids)
+
+    #Sources used for drawing boundary boxes and implementing detection
+    #: https://www.computervision.zone/courses/object-detection-mobile-net-ssd/?nsl_bypass_cache=00e43a010f43958bdabf63ca4b399085
+    #: https://www.askpython.com/resources/draw-bounding-boxes-image
 
     #Perform detection using the confidence threshold
     classIds, confs, bbox = net.detect(img, confThreshold=thresh)
@@ -265,6 +280,9 @@ GET Endpoint, returns raw image bytes
 """
 @app.get("/api/image/{image_file_id}")
 async def get_processed_image(image_file_id: str):
+    #Source for adding to created directory
+    #: https://fastapi.tiangolo.com/advanced/custom-response/#fileresponse
+
     file_path = os.path.join(PROCESSED_IMAGE_DIR, f"{image_file_id}.png")
 
     if not os.path.exists(file_path):
