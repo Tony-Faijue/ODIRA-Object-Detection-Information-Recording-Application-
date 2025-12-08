@@ -6,7 +6,9 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class WebcamService {
-  
+  // Source used ngx-webcam library
+  // https://github.com/basst314/ngx-webcam#readme 
+
   //Webcam snapshot trigger
   private trigger: Subject<void> = new Subject();
   //Switch to next/previous camera

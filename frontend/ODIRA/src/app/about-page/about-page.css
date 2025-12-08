@@ -25,7 +25,7 @@
     @apply text-center border-2 border-blue-300;
 }
 .block-height{
-    @apply border-2 border-white p-2 grow;
+    @apply  p-2 grow;
 }
 h2{
     @apply text-sm text-nowrap text-center;

@@ -43,6 +43,12 @@ export class ProcessImageService {
   * @returns a file object
   */
  dataURLToFile(dataUrl: string, filename:string):File{
+  // Sources Used to handle decoding base64 to binary string
+
+  // https://www.geeksforgeeks.org/javascript/how-to-convert-base64-to-file-in-javascript/
+  // https://www.digitalocean.com/community/tutorials/how-to-encode-and-decode-strings-with-base64-in-javascript
+
+
   //For the allowes file types
   const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png'];
 
