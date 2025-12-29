@@ -5,10 +5,11 @@ from collections import Counter
 """
 Online Sources Used
 https://www.computervision.zone/courses/object-detection-mobile-net-ssd/?nsl_bypass_cache=00e43a010f43958bdabf63ca4b399085
-https://www.askpython.com/resources/draw-bounding-boxes-image
-https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API
 """
 
+"""
+------------------This code is for testing the object detection locally in pycharm------------------
+"""
 
 
 #Threshold & NMS Threshold (Reduce Duplication for same object detected)
