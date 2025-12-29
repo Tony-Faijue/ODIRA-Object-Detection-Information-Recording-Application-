@@ -1,5 +1,6 @@
-import json
+from contextlib import asynccontextmanager
 
+from apscheduler.schedulers.background import BackgroundScheduler
 from fastapi import FastAPI, HTTPException, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -8,6 +9,7 @@ from starlette.status import HTTP_201_CREATED
 import cv2
 import numpy as np
 import os
+import time
 import uuid
 from collections import Counter
 
@@ -26,7 +28,40 @@ https://fastapi.tiangolo.com/advanced/custom-response/#fileresponse
 --------Fast API Setup---------
 Manages the server initialization and basic configurations
 """
-app = FastAPI()
+
+"""
+Sources Used for apscheduler, aysnccontextmanager, OS time
+https://apscheduler.readthedocs.io/en/3.x/userguide.html
+https://fastapi.tiangolo.com/advanced/events/#startup-and-shutdown-together
+https://www.blog.pythonlibrary.org/2013/11/14/python-101-how-to-write-a-cleanup-script/
+"""
+
+#Method to delete files older than 10 minutes in the directory every 5 minutes
+def clean_up_files():
+    now = time.time()
+    for filename in os.listdir(PROCESSED_IMAGE_DIR):
+        file_path = os.path.join(PROCESSED_IMAGE_DIR, filename)
+        #Check if file older than 10 minutes
+        if os.stat(file_path):
+            if os.stat(file_path).st_mtime < now - 600:
+                try:
+                    os.remove(file_path)
+                except Exception as e:
+                    print(f"Error deleting {filename}: {e}")
+
+#Background Task Scheduling To Handle Cleaning/Deleting Images Every 5 minutes on the server
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    scheduler = BackgroundScheduler()
+    #Intialize the scheduler and jobs before the server starts
+    scheduler.add_job(clean_up_files,'interval', minutes=5)
+    scheduler.start()
+    yield
+    #Shutdown the scheduler when the server ends
+    scheduler.shutdown()
+
+app = FastAPI(lifespan=lifespan)
+
 #To run server
 # fastapi dev odiraserver.py --port 9998
 origins = [
