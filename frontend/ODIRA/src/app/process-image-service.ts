@@ -4,6 +4,7 @@ import { WebcamService } from './webcam-service';
 import { FileImage } from './image-state-service';
 import { Observable } from 'rxjs';
 import { SettingsData, SettingsService } from './settings-service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class ProcessImageService {
   settingsService = inject(SettingsService);
 
   //Placeholder api endpoint
-  private FILE_URL = "http://127.0.0.1:9998/api/process-image";
+  private FILE_URL = `${environment.ProcessImageURL}/api/process-image`;
 
 
   /**
