@@ -69,8 +69,8 @@ origins = [
     # "http://localhost:4200",
     # "http://127.0.0.1:9998",
     #Vercel URLs
-    "https://odira-object-detection-information.vercel.app/",
-    "https://liable-puffin-faijuetony-7847542b.koyeb.app/"
+    "https://odira-object-detection-information.vercel.app",
+    "https://liable-puffin-faijuetony-7847542b.koyeb.app"
 
 ]
 #Middleware for Routes
