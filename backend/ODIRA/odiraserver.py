@@ -302,7 +302,8 @@ async def process_image_upload(file: UploadFile = File(...), settings: str = For
     #Save the processed image to disk with unique id
     cv2.imwrite(save_path, processed_img)
 
-    base_url = "http://127.0.0.1:9998"
+    # Get the production url
+    base_url = "https://liable-puffin-faijuetony-7847542b.koyeb.app"
 
     response_object = ImageFile(
         image_file_id=image_id,
