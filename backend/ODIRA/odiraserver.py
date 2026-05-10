@@ -41,6 +41,7 @@ https://www.blog.pythonlibrary.org/2013/11/14/python-101-how-to-write-a-cleanup-
 #load_dotenv()
 
 BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:9998") #Replace with Production URL
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://odira-object-detection-information.vercel.app") #URL can be swapped
 
 #Method to delete files older than 10 minutes in the directory every 5 minutes
 def clean_up_files():
@@ -71,12 +72,7 @@ app = FastAPI(lifespan=lifespan)
 #To run server
 # fastapi dev odiraserver.py --port 9998
 origins = [
-    #Local Testing
-    # "http://localhost:4200",
-    # "http://127.0.0.1:9998",
-    #Vercel URL
-    "https://odira-object-detection-information.vercel.app",
-
+    FRONTEND_URL
 ]
 #Middleware for Routes
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
