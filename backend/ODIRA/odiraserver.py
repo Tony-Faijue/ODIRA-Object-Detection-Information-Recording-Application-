@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 
 from apscheduler.schedulers.background import BackgroundScheduler
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -36,6 +37,11 @@ https://fastapi.tiangolo.com/advanced/events/#startup-and-shutdown-together
 https://www.blog.pythonlibrary.org/2013/11/14/python-101-how-to-write-a-cleanup-script/
 """
 
+#Load local .env file for local testing
+#load_dotenv()
+
+BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:9998") #Replace with Production URL
+
 #Method to delete files older than 10 minutes in the directory every 5 minutes
 def clean_up_files():
     now = time.time()
@@ -68,9 +74,8 @@ origins = [
     #Local Testing
     # "http://localhost:4200",
     # "http://127.0.0.1:9998",
-    #Vercel URLs
+    #Vercel URL
     "https://odira-object-detection-information.vercel.app",
-    "https://liable-puffin-faijuetony-7847542b.koyeb.app"
 
 ]
 #Middleware for Routes
@@ -218,7 +223,7 @@ def detect_objects_from_image(img, settings_data_model:SettingsData):
             # Create the boundary positions x,y,w,h for objects
             rects = [f[2] for f in filtered]  # x, y, w, h
             scores = [f[1] for f in filtered]  # confidence scores
-            class_Ids = [f[0] for f in filtered]  # class id
+            class_ids = [f[0] for f in filtered]  # class id
 
             # NMS returns indices of boxes to keep, using the nms thresh
             indices = cv2.dnn.NMSBoxes(rects, scores, thresh, nms_threshold)
@@ -236,7 +241,7 @@ def detect_objects_from_image(img, settings_data_model:SettingsData):
             # Draw the kept boxes and collect the counts
             for i in indices:
                 x, y, w, h = rects[i]
-                cid = class_Ids[i]
+                cid = class_ids[i]
                 score = scores[i]
                 class_name = class_names[cid - 1]
                 kept_class_ids.append(class_names[cid - 1])
@@ -302,15 +307,12 @@ async def process_image_upload(file: UploadFile = File(...), settings: str = For
     #Save the processed image to disk with unique id
     cv2.imwrite(save_path, processed_img)
 
-    # Get the production url
-    base_url = "https://liable-puffin-faijuetony-7847542b.koyeb.app"
-
     response_object = ImageFile(
         image_file_id=image_id,
         content_type="image/png",
         file_name=file.filename,
         results=results_data,
-        image_url=f"{base_url}/api/image/{image_id}"
+        image_url=f"{BASE_URL}/api/image/{image_id}"
     )
     return response_object
 
