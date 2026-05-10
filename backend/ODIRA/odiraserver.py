@@ -6,7 +6,7 @@ from fastapi import FastAPI, HTTPException, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
-from starlette.status import HTTP_201_CREATED
+from starlette.status import HTTP_201_CREATED, HTTP_200_OK
 import cv2
 import numpy as np
 import os
@@ -327,3 +327,11 @@ async def get_processed_image(image_file_id: str):
         raise HTTPException(status_code=404, detail="Processed image not found.")
     #Return the process image file
     return FileResponse(path=file_path, media_type="image/png")
+
+
+"""
+Method to check the health of the server
+"""
+@app.get("/health", status_code=HTTP_200_OK)
+async def health_check():
+    return {"status": "Server is running"}
