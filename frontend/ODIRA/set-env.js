@@ -1,7 +1,7 @@
 const { writeFile, existsSync, mkdirSync} = require('fs');
 
 //Target directory and file path to write the environment.ts file
-const dirPath = './src/envrionments';
+const dirPath = './src/environments';
 const targetPath = `${dirPath}/environment.ts`;
 
 if(!existsSync(dirPath)){
