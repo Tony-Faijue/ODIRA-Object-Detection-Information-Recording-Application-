@@ -1,45 +1,75 @@
 @import 'tailwindcss';
-.settings-grid{
-    @apply grid grid-rows-1;
+.settings-card-container{
+    @apply bg-slate-900/40 border border-slate-900/80 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm flex flex-col w-full text-left;
 }
-.settings-border{
-    @apply space-y-4;
+.settings-header-bar{
+    @apply border-b border-slate-800/80 px-6 py-4 flex items-center justify-between bg-slate-900/20;
 }
-.heading{
-    @apply text-3xl;
+.settings-title-group{
+    @apply flex items-center space-x-3;
 }
-.settings-container{
-    @apply bg-slate-800 p-3;
+.settings-title-text{
+    @apply text-base font-semibold tracking-wide text-slate-200;
 }
-.settings-background{
-    @apply bg-slate-800 grid-cols-3 grid grid-rows-6 p-2;
+.settings-icon{
+    @apply text-slate-200 text-lg;
 }
-.last-column{
-    @apply grid grid-cols-2;
+.settings-body{
+    @apply p-6 space-y-6 w-full
 }
-.list{
-    @apply col-span-3 row-span-3 border-3 border-black;
+.parameter-row{
+    @apply space-y-2 w-full relative;
 }
-.slider {
-    @apply w-full h-[15px] rounded-md bg-gray-300 outline-none transition-opacity duration-200 hover:opacity-100 accent-blue-700;
+.parameter-label-wrapper{
+    @apply flex items-center justify-between text-xs font-semibold tracking-wide text-slate-400 uppercase;
 }
-.tooltip{
-    @apply relative inline-block cursor-pointer; 
+.parameter-value-badge{
+    @apply font-mono text-sm text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded border border-indigo-500/20 font-bold;
 }
-.tooltip-text{
-    @apply group-hover:visible invisible absolute z-10 bg-gray-700 text-white text-center p-1 rounded-md  right-5 h-auto w-45;
-    @apply top-full left-1/2 transform -translate-x-1/2;
+
+.slider-input {
+    @apply w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500 hover:bg-slate-700/80 transition duration-150 outline-none;
 }
-.arrow::after{
+.info-icon-wrapper{
+    @apply relative inline-flex items-center text-slate-500 hover:text-slate-300 transition cursor-help ml-2;
+}
+
+.tooltip-box{
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-slate-900 text-slate-300 text-xs rounded-lg border border-slate-800 shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50 font-normal leading-relaxed text-left normal-case; 
+}
+
+.tooltip-box::after{
     content: " ";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -10px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
+    @apply absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-slate-900;
 }
-.update-btn{
-    @apply w-45 bg-emerald-500 hover:bg-emerald-600 hover:shadow-emerald-400 text-white font-semibold py-3 rounded-lg shadow-md transition-all duration-200;
+
+  /** Category Checklist Section
+  */
+.category-box-header{
+    @apply text-xs font-bold tracking-wider text-slate-400 uppercase pb-2 border-slate-800/80;
 }
+.checklist-window{
+    @apply w-full h-[180px] overflow-y-auto bg-slate-950/50 border border-slate-900 rounded-lg p-3 space-y-2.5;
+}
+.check-item-wrapper{
+    @apply flex items-center space-x-3 cursor-pointer select-none text-sm text-slate-300 hover:text-white transition py-0.5;
+}
+.checkbox-input{
+    @apply rounded border-slate-800 bg-slate-900 text-indigo-600 focus:ring-indigo-500/30 focus:ring-offset-slate-950 h-4 w-4 transition cursor-pointer;
+}
+/** Custom style override for native scrolling*/
+.custom-scrollbar::-webkit-scrollbar{
+     width: 6px
+}
+.custom-scrollbar::-webkit-scrollbar-track{
+    background:transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb{
+    background-color:rgba(30, 41, 59, 0.8);
+    border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover{
+    background-color:rgba(51, 65, 85, 1);
+}
+
+

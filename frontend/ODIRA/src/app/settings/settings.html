@@ -1,106 +1,101 @@
-<div class="w-full settings-grid settings-border">
-  <div class="flex items-center justify-between">
-    <div class="w-1/3"></div>
-    <div class="w-1/3 text-center">
-      <h1 class="heading">Settings</h1>
-    </div>
-    <div class="w-1/3 text-right">
-      <i class="fa-solid fa-gear fa-2x"></i>
+<div class="settings-card-container">
+  <!-- Settings Header -->
+  <div class="settings-header-bar">
+    <div class="settings-title-group">
+      <i class="fa-solid fa-gear settings-icon"></i>
+      <h2 class="settings-title-text">Model Settings</h2>
     </div>
   </div>
-  <div class="settings-container">
-    <div class="settings-background space-x-4">
-      <!-- Object Detection Threshold -->
-      <p>Object Threshold (Confidence)</p>
-      <div>
-        <input
-          type="range"
-          min="0.0"
-          max="1.0"
-          step="0.01"
-          class="slider w-3/4"
-          id="obj_thresh"
-          name="obj_thresh_input"
-          [ngModel]="objThresh()"
-          (ngModelChange)="objThresh.set($event)"
-        />
+
+  <!-- Control Settings -->
+  <div class="settings-body">
+    <!-- Object Detection Threshold -->
+    <div class="parameter-row">
+      <div class="parameter-label-wrapper">
+        <span class="flex items-center"
+          >Object Threshold
+          <span class="info-icon-wrapper group">
+            <i class="fa-solid fa-circle-info text-xs"></i>
+            <span class="tooltip-box"
+              >Lower values detect objects with low certainty. Higher values detect objects with
+              higher certainty.
+            </span>
+          </span>
+        </span>
+        <span class="parameter-value-badge">{{ objThresh().toFixed(2) }}</span>
       </div>
-      <div class="last-column">
-        <p>{{ objThresh() }}</p>
-        <div class="tooltip group">
-          <div class="grid grid-cols-1 justify-items-center mt-0.5">
-            <i class="fa-solid fa-circle-info"></i>
-          </div>
-          <span class="tooltip-text arrow"
-            ><p>
-              Slide to lower values, Detect objects with low certainty. Slide to higher values,
-              Detect objects with higher certainty.
-            </p></span
+      <input
+        type="range"
+        min="0.0"
+        max="1.0"
+        step="0.01"
+        class="slider-input"
+        id="obj_thresh"
+        name="obj_thresh_input"
+        [ngModel]="objThresh()"
+        (ngModelChange)="objThresh.set($event)"
+      />
+    </div>
+
+    <!-- NMS Threshold -->
+    <div class="parameter-row">
+      <div class="parameter-label-wrapper">
+        <span class="flex items-center"
+          >NMS Threshold
+          <span class="info-icon-wrapper group">
+            <i class="fa-solid fa-circle-info text-x5"></i>
+            <span class="tooltip-box"
+              >Lower values show fewer overlapping boxes. Higher values show more overlapping boxes.
+            </span>
+          </span>
+        </span>
+        <span class="parameter-value-badge">{{ nmsThresh().toFixed(2) }}</span>
+      </div>
+      <input
+        type="range"
+        min="0.0"
+        max="1.0"
+        step="0.01"
+        class="slider-input"
+        id="nms_thresh"
+        name="nms_thresh_input"
+        [ngModel]="nmsThresh()"
+        (ngModelChange)="nmsThresh.set($event)"
+      />
+    </div>
+
+    <!-- Categories Checkbox List -->
+    <div class="space-y-3">
+      <h3 class="category-box-header">Target Filter Classes</h3>
+      <div class="checklist-window custom-scrollbar">
+        <label class="check-item-wrapper border-b border-slate-900/60 pb-2 mb-2">
+          <input
+            type="checkbox"
+            id="all"
+            name="all"
+            class="checkbox-input"
+            [(ngModel)]="selectAllChecked"
+            (change)="toggleAll()"
+          />
+          <span class="font-semibold text-slate-200 text-xs tracking-wide uppercase"
+            >Select All Classes</span
           >
-        </div>
-      </div>
-      <!-- NMS Threshold -->
-      <p>NMS Threshold (Overlap Objects)</p>
-      <div>
-        <input
-          type="range"
-          min="0.0"
-          max="1.0"
-          step="0.01"
-          class="slider w-3/4"
-          id="nms_thresh"
-          name="nms_thresh_input"
-          [ngModel]="nmsThresh()"
-          (ngModelChange)="nmsThresh.set($event)"
-        />
-      </div>
-      <div class="last-column">
-        <p>{{ nmsThresh() }}</p>
-        <div class="tooltip group">
-          <div class="grid grid-cols-1 justify-items-center mt-0.5">
-            <i class="fa-solid fa-circle-info"></i>
-          </div>
-          <span class="tooltip-text arrow"
-            ><p>
-              Slide to lower values, Fewer overlapping boxes are shown. (Stricter Filtering). Slide
-              to higher values, More overlapping boxes are shown. (Looser Filtering).
-            </p></span
-          >
-        </div>
-      </div>
-      <div class="justify-items-center grid grid-row-1 col-span-3">
-        <p>Categories</p>
-      </div>
-      <div class="list">
-        <div
-          class="grid grid-cols-1 justify-items-center bg-gray-600 w-full h-[150px] overflow-y-scroll"
-        >
-          <div class="w-1/2">
-            <div class="space-x-4">
-              <input
-                type="checkbox"
-                id="all"
-                name="all"
-                [(ngModel)]="selectAllChecked"
-                (change)="toggleAll()"
-              />
-              <label for="all">Select All</label>
-            </div>
-            <!-- Category Items -->
-            @for (category of categories; track category.id){
-            <div class="space-x-4">
-              <input
-                type="checkbox"
-                id="{{ category.id }}"
-                name="{{ category.id }}"
-                [(ngModel)]="category.checked"
-                (change)="updateSelectAllChecked()"
-              />
-              <label for="{{ category.id }}">{{ category.label }}</label>
-            </div>
-            }
-          </div>
-        </div>
+        </label>
+
+        <!-- Category Items -->
+        @for (category of categories; track category.id) {
+          <label class="check-item-wrapper">
+            <input
+              type="checkbox"
+              id="{{ category.id }}"
+              name="{{ category.id }}"
+              class="checkbox-input"
+              [(ngModel)]="category.checked"
+              (change)="updateSelectAllChecked()"
+            />
+            <span class="text-xs tracking-wide font-mono text-slate-300">{{ category.label }}</span>
+          </label>
+        }
       </div>
     </div>
   </div>
