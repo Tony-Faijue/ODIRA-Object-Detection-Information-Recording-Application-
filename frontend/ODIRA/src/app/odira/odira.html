@@ -1,11 +1,17 @@
 <div class="container max-w-full">
   <!-- Main menu -->
-  <div class="nav-menu">
-    <div class="heading-items">
-      <a [routerLink]="['/']"><h1 class="heading">ODIRA</h1></a>
-      <a [routerLink]="['/about']"><h1 class="heading">ABOUT</h1></a>
+  <header class="nav-background">
+    <div class="nav-layout">
+      <div class="title-and-version-style">
+        <span class="title-style">ODIRA</span>
+        <span class="vModel">v1 Model</span>
+      </div>
+      <nav class="nav-menu">
+        <a [routerLink]="['/']"><h1 class="heading">DASHBOARD</h1></a>
+        <a [routerLink]="['/about']"><h1 class="heading">ABOUT</h1></a>
+      </nav>
     </div>
-  </div>
+  </header>
 
   <!-- ODIRA Content -->
   <div class="odira-content">
