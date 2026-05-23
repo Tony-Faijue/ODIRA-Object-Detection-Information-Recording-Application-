@@ -1,66 +1,78 @@
-<div class="w-full bg-gray-700 border-2 border-black webcam-grid">
-  <div class="flex items-center justify-between">
-    <div class="w-1/3"></div>
-    <div class="w-1/3 text-center">
-      <h1 class="heading">Webcam</h1>
+<div class="webcam-card-container">
+  <!-- Webcam Header -->
+  <div class="webcam-header-bar">
+    <div class="webcam-title-group">
+      <i class="fa-solid fa-video webcam-icon"></i>
+      <h2 class="webcam-title-text">Live Webcam Feed</h2>
     </div>
-    <div class="w-1/3 place-self-end">
-      <i class="fa-solid fa-video fa-4x"></i>
-    </div>
+    <!-- Camera Status Indicator -->
+    <span class="flex h-2 w-2 relative">
+      <span
+        [class.bg-emerald-400]="webcamService.showWebcam()"
+        [class.bg-slate-500]="!webcamService.showWebcam()"
+        class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+      ></span>
+      <span
+        [class.bg-emerald-500]="webcamService.showWebcam()"
+        [class.bg-slate-500]="!webcamService.showWebcam()"
+        class="relative inline-flex rounded-full h-2 w-2"
+      ></span>
+    </span>
   </div>
-  <div class="flex items-center justify-between">
-    <div class="w-1/3"></div>
-    <div class="mt-2 mb-2 text-center">
-      <!-- Camera Toggle On/Off button -->
-      @if(webcamService.showWebcam() == true){
-      <button class="camera-toggle-btn-on-bg" (click)="toggleCamera()">
+
+  <!-- Control Bar -->
+  <div class="webcam-toggle-area">
+    <!-- Camera Toggle On/Off button -->
+    @if (webcamService.showWebcam() == true) {
+      <button class="camera-toggle-btn-on-bg" (click)="toggleCamera()" title="Turn Camera Off">
         <div class="camera-toggle-btn-on"></div>
       </button>
-      } @else{
-      <button class="camera-toggle-btn-off-bg" (click)="toggleCamera()">
+    } @else {
+      <button class="camera-toggle-btn-off-bg" (click)="toggleCamera()" title="Turn Camera On">
         <div class="camera-toggle-btn-off"></div>
       </button>
-      }
-    </div>
-    <div class="w-1/3"></div>
+    }
   </div>
 
-  @if (webcamService.showWebcam() == true){
-  <webcam
-    class="webcam-window"
-    [width]="1080"
-    [height]="720"
-    [videoOptions]="webcamService.videoOptions"
-    [trigger]="webcamService.getTriggerObservable()"
-    (imageCapture)="webcamService.handleImage($event)"
-    (initError)="webcamService.handleInitError($event)"
-    [mirrorImage]="webcamService.mirrorImage()"
-    [allowCameraSwitch]="webcamService.allowCameraSwitch()"
-    [trigger]="webcamService.getTriggerObservable()"
-    (imageCapture)="webcamService.handleImage($event)"
-    [imageQuality]="webcamService.imageQuality()"
-  >
-  </webcam>
-
-  } @else{
-  <div class="webcam-window">
-    <img src="images/camera-off.jpg" class="img-size" />
+  <!-- Screen Canvas Viewport -->
+  <div class="webcam-viewscreen-wrapper">
+    @if (webcamService.showWebcam() == true) {
+      <webcam
+        class="webcam-window"
+        [width]="1080"
+        [height]="720"
+        [videoOptions]="webcamService.videoOptions"
+        [trigger]="webcamService.getTriggerObservable()"
+        (imageCapture)="webcamService.handleImage($event)"
+        (initError)="webcamService.handleInitError($event)"
+        [mirrorImage]="webcamService.mirrorImage()"
+        [allowCameraSwitch]="webcamService.allowCameraSwitch()"
+        [trigger]="webcamService.getTriggerObservable()"
+        (imageCapture)="webcamService.handleImage($event)"
+        [imageQuality]="webcamService.imageQuality()"
+      >
+      </webcam>
+    } @else {
+      <div class="flex justify items-center space-x-4">
+        <i class="fa-solid fa-video-slash text-5xl text-slate-800 mb-2"></i>
+        <span class="text-xs font-medium tracking-wide text-slate-500 font-mono"
+          >Camera Feed Inactive</span
+        >
+      </div>
+    }
   </div>
-  }
-  <div class="flex items-center justify-between">
-    <div class="w-1/3"></div>
-    <div class="mt-2 mb-2 w-1/3 text-center">
-      @if(webcamService.showWebcam() == true){
 
+  <!-- Action Footer Section -->
+
+  <div class="webcam-action-footer">
+    @if (webcamService.showWebcam() == true) {
       <button class="capture-btn" (click)="webcamService.triggerSnapShot()">
-        <i class="fa-solid fa-camera fa-3x"></i>
+        <i class="fa-solid fa-camera text-xl"></i>
       </button>
-      } @else{
-      <button class="capture-btn-gray">
-        <i class="fa-solid fa-camera fa-3x"></i>
+    } @else {
+      <button class="capture-btn-gray" disabled>
+        <i class="fa-solid fa-camera text-xl"></i>
       </button>
-      }
-    </div>
-    <div class="w-1/3"></div>
+    }
   </div>
 </div>
