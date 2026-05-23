@@ -7,34 +7,35 @@
         <span class="vModel">v1 Model</span>
       </div>
       <nav class="nav-menu">
-        <a [routerLink]="['/']"><h1 class="heading">DASHBOARD</h1></a>
-        <a [routerLink]="['/about']"><h1 class="heading">ABOUT</h1></a>
+        <a [routerLink]="['/']" class="heading">DASHBOARD</a>
+        <a [routerLink]="['/about']" class="heading">ABOUT</a>
       </nav>
     </div>
   </header>
 
   <!-- ODIRA Content -->
-  <div class="odira-content">
-    <!-- Left Column -->
-    <div class="left-column">
-      <div class="webcam-component">
+  <main class="odira-content">
+    <!-- Left Panel -->
+    <section class="left-column">
+      <div class="dashboard-card">
         <app-webcam-window />
       </div>
-      <div class="result-component">
+      <div class="dashboard-card">
         <app-result-component />
       </div>
-    </div>
+    </section>
+
     <!-- Right Column -->
-    <div class="right-column">
-      <div class="settings-component">
+    <aside class="right-column">
+      <div class="dashboard-card">
         <app-settings />
       </div>
-      <div class="upload-image-component">
+      <div class="dashboard-card">
         <app-upload-image />
       </div>
-      <div class="image-preview-component">
+      <div class="dashboard-card">
         <app-image-preview />
       </div>
-    </div>
-  </div>
+    </aside>
+  </main>
 </div>
