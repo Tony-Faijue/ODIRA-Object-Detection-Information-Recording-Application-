@@ -1,19 +1,38 @@
 @import 'tailwindcss';
-.preview-grid{
-    @apply grid grid-rows-[1fr_2fr] p-2 h-auto;
+
+.preview-card-container{
+    @apply bg-slate-900/40 border border-slate-900/80 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm flex flex-col w-full text-left;
 }
-.preview-flex{
-    @apply flex flex-col h-full;
+.preview-header-bar{
+    @apply border-b border-slate-800/80 px-6 py-4 flex items-center justify-between bg-slate-900/20;
 }
-.img-size{
-    @apply w-full h-full;
+.preview-title-group{
+    @apply flex items-center space-x-3;
 }
-.heading{
-    @apply text-3xl place-self-center;
+.preview-title-text{
+    @apply text-base font-semibold tracking-wide text-slate-200;
+}
+.preview-icon{
+    @apply text-slate-200 text-lg;
+}
+.preview-action-bar{
+    @apply py-3 px-6 bg-slate-950/40 flex justify-center border-b border-slate-900;
+}
+.preview-viewport-wrapper{
+    @apply relative aspect-video bg-slate-950 flex flex-col items-center justify-center overflow-hidden w-full p-2;
+}
+.img-contain-style{
+    @apply max-h-[340px] w-auto h-full object-contain rounded-lg shadow-inner;
+}
+.fallback-icon {
+    @apply text-5xl text-slate-800 mb-2;
+}
+.fallback-text {
+    @apply text-xs font-medium tracking-wide text-slate-500 font-mono;
 }
 .process-img-btn{
-    @apply flex items-center justify-center w-full h-[50px] bg-emerald-300 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg shadow-md transition-all duration-200 px-2;
+    @apply w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase py-2.5 px-4 rounded-lg shadow-lg shadow-indigo-600/10 transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-2 cursor-pointer;
 }
 .process-img-btn-gray{
-    @apply flex items-center justify-center w-full h-[50px] bg-gray-400 hover:bg-gray-500 text-white text-sm font-semibold rounded-lg transition-all duration-200 px-2;
+    @apply w-full bg-slate-800 text-slate-500 font-semibold text-xs tracking-wider uppercase py-2.5 px-4 rounded-lg border border-slate-800/60 flex items-center justify-center space-x-2 cursor-not-allowed;
 }
