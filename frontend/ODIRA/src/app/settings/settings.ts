@@ -11,10 +11,9 @@ import { Category, SettingsData, SettingsService } from '../settings-service';
 
 export class Settings implements OnInit{
 
-  settingsService = inject(SettingsService);
+  private readonly settingsService = inject(SettingsService);
 
   categories: Category[] = [];
-
   selectAllChecked:boolean = true;
 
   //Signals fo UI display
@@ -36,12 +35,8 @@ export class Settings implements OnInit{
     effect(() => {
       const currentThresholds = this.settingsDataComputed();
       //When the thresholds changes, update the service with the latest settings data
-      this.settingsService.updateSettings({...currentThresholds, categories:this.categories.filter(s=>s.checked)});
+      this.settingsService.updateSettings({...currentThresholds, categories:this.categories});
       console.log("Setting Service data auto updated");
-
-      //Print the current state of the settings
-      const currentState = this.settingsService.currentSettingsSnapshot();
-      console.log("Service state after threshold update:", currentState.objThresh, currentState.nmsThresh, "Threshold Values");
     });
 
   }
@@ -53,8 +48,12 @@ export class Settings implements OnInit{
     this.objThresh.set(currentSettings.objThresh);
     this.nmsThresh.set(currentSettings.nmsThresh);
     //Set all categories checked by default
-    this.categories = currentSettings.categories.map(category => ({...category, checked:true}));
-    this.triggerCategoryUpdate();
+    this.categories = currentSettings.categories.map(category => ({
+      ...category,
+       checked: category.checked !== undefined ? category.checked: true
+      }));
+    //Update the select all check box state based on the categories
+    this.selectAllChecked = this.categories.length > 0 && this.categories.every(category => category.checked);
   }
 
   /**
@@ -62,19 +61,14 @@ export class Settings implements OnInit{
    */
   public toggleAll(){
     this.categories.forEach(category => category.checked = this.selectAllChecked);
+    this.triggerCategoryUpdate()
   }
   /**
    * Method to update the select all check box when all items are selected or not 
    */
   public updateSelectAllChecked(){
-    let allChecked = this.categories.every(category => category.checked);
-    if(allChecked == true){
-      this.selectAllChecked = true;
-      this.triggerCategoryUpdate();
-    } else {
-      this.selectAllChecked = false;
-      this.triggerCategoryUpdate();
-    }
+    this.selectAllChecked = this.categories.length > 0 && this.categories.every(category => category.checked);
+    this.triggerCategoryUpdate();
   }
 
   /**
@@ -84,16 +78,10 @@ export class Settings implements OnInit{
     const currentThresholds = this.settingsDataComputed();
     let dataToSave: SettingsData = {
       ...currentThresholds,
-      categories: this.categories.filter(s => s.checked)
+      categories: this.categories
     };
     this.settingsService.updateSettings(dataToSave);
-    console.log('Setting Service with latest categories');
-    //Check service state after category update
-    const currentState = this.settingsService.currentSettingsSnapshot();
-    console.log("Service state after category update: ", currentState.categories);
+    console.log('GlobalSetting Service with latest categories');
   }
-
-
-
 
 }
