@@ -1,14 +1,74 @@
 @import 'tailwindcss';
 
-table{
-    @apply w-full border-4 border-black;
+.results-card-container{
+    @apply bg-slate-900/40 border border-slate-900/80 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm flex flex-col w-full text-left;
 }
-th{
-    @apply border-2 border-black;
+.results-header-bar{
+    @apply border-b border-slate-800/80 px-6 py-4 flex items-center justify-between bg-slate-900/20;
 }
-td{
-    @apply border-2 border-black;
+.results-title-group{
+    @apply flex items-center space-x-3;
 }
-.hover-link{
-    @apply text-blue-500;
+.results-title-text{
+    @apply text-base font-semibold tracking-wide text-slate-200;
+}
+.results-icon{
+    @apply text-slate-200 text-lg;
+}
+.results-body {
+    @apply p-6 space-y-6 w-full;
+}
+.results-viewport{
+    @apply relative w-full bg-slate-950 rounded-xl border border-slate-900 p-3 flex flex-col items-center justify-center overflow-hidden;
+}
+.results-processed-img{
+    @apply w-full max-h-[460px] object-contain rounded-lg shadow-2xl transition duration-300;
+}
+
+/**Table Styles*/
+.results-table-wrapper{
+    @apply w-full overflow-hidden border border-slate-900 rounded-xl bg-slate-950/20 mt-4;
+}
+.results-table{
+    @apply w-full text-left border-collapse text-xs;
+}
+.results-thead{
+    @apply bg-slate-900/60 border-b border-slate-800/80 text-slate-400 uppercase tracking-wider text-[11px] font-semibold;
+}
+.results-th{
+    @apply px-6 py-3.5 font-semibold;
+}
+.results-tr{
+    @apply border border-slate-900/60 hover:bg-slate-900/20 transition duration-150;
+}
+.results-td{
+    @apply px-6 py-3.5 text-slate-300 font-medium;
+}
+.results-td-badge{
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20;
+}
+.total-counter-hero{
+    @apply w-full bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 flex items-center justify-between text-emerald-400 font-medium text-sm mt-4;
+}
+/**Error Container styles*/
+.trouble-card{
+    @apply bg-rose-500/5 border border-rose-500/10 rounded-xl p-5 space-y-4 mt-4 text-left; 
+}
+.trouble-header{
+    @apply flex items-center justify-between text-rose-400 text-sm font-semibold border-b border-rose-500/10 pb-3; 
+}
+.trouble-title-group{
+    @apply flex items-center space-x-3;
+}
+.trouble-list{
+    @apply space-y-2.5 text-xs text-slate-400 list-none pl-0;
+}
+.trouble-item{
+    @apply flex items-start text-slate-400 before:content-['→'] before:text-rose-500 before:mr-2.5 before:font-bold;
+}
+.hover-link {
+    @apply text-indigo-400 hover:text-indigo-300 underline font-semibold transition ml-1;
+}
+.fallback-viewport{
+    @apply w-full min-h-[200px] flex flex-col items-center justify-center text-slate-600 text-center p-8 border border-dashed border-slate-900 rounded-xl bg-slate-950/20 font-mono text-xs tracking-wide;
 }
