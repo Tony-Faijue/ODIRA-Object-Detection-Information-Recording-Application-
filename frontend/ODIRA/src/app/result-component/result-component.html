@@ -1,76 +1,120 @@
-<div class="bg-gray-600 px-2">
-  <div><h1 class="text-center text-4xl">Results</h1></div>
-
-  @if(processedImageUrl()){
-  <h2 class="text-3xl p-2 text-center">Completed Processed Image</h2>
-  <div class="flex items-center justify-center border-2 border-black bg-slate-800 p-4">
-    <img [src]="processedImageUrl()" class="w-auto" />
-  </div>
-  <h3 class="text-center text-3xl">Detection Results:</h3>
-  <!-- Table for objects detected -->
-  @if(resultsList().length !=0){
-  <div class="flex justify-end">
-    <i class="fa-solid fa-check fa-3x text-green-500"></i>
-  </div>
-  }
-  <table>
-    <thead class="bg-blue-600">
-      <tr>
-        <th>Class</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of resultsList(); track item.item){
-      <tr>
-        <td class="capitalize text-center p-2">{{ item.item }}</td>
-        <td class="text-center p-2">{{ item.count }}</td>
-      </tr>
-      }
-      <!-- No objects detected -->
-      @empty{
-      <tr>
-        <td class="capitalize text-center p-2">No Class</td>
-        <td class="text-center p-2">0</td>
-      </tr>
-      }
-    </tbody>
-  </table>
-
-  <!--Error message no objects is detected  -->
-  @if(resultsList().length == 0){
-  <div class="mt-4 pb-2">
-    <div class="flex justify-end">
-      <i class="fa-solid fa-circle-xmark text-red-600 fa-2x"></i>
+<div class="results-card-container">
+  <!-- Header Module -->
+  <div class="results-header-bar">
+    <div class="results-title-group">
+      <i class="fa-solid fa-square-poll-horizontal results-icon"></i>
+      <h2 class="results-title-text">Inference Results Engine</h2>
     </div>
-    <p class="text-red-600 font-bold text-2xl text-center">
-      No objects were detected from the image
-    </p>
-    <p class="text-red-600 font-bold text-2xl text-center">Solutions:</p>
-    <ul class="flex flex-col items-center list-disc">
-      <li>Slide threshold values to increase detection.</li>
-      <li>
-        Select the appropriate category/categories that the object(s) in the image belong to.
-        <ul class="flex flex-col items-center">
-          <li class="underline hover-link">
-            <a [routerLink]="['/about']">List of items in each category</a>
-          </li>
-        </ul>
-      </li>
-      <li>Make sure the object(s) are visible in the image.</li>
-    </ul>
+
+    <!-- Status Indicator -->
+    <span class="flex h-2 w-2 relative">
+      @if (processedImageUrl()) {
+        <span
+          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-500 opacity-75"
+        ></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+      } @else {
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-600"></span>
+      }
+    </span>
   </div>
-  }
-  <!-- Display Total Objects only if more than 0 -->
-  @for (item of resultsList(); track item.item; let idx = $index){ @if($first){
-  <p class="text-center text-3xl text-emerald-500 py-4">
-    Total Objects Detected in the Image: {{ item.total_count_of_objects }}
-  </p>
-  } } }
-  <!-- No image url data -->
-  @else {
-  <div class="flex items-center justify-center">
-    <p class="text-xl pb-4">No processed image data available yet.</p>
+
+  <!-- Result Content Body -->
+  <div class="results-body">
+    @if (processedImageUrl()) {
+      <div class="results-viewport">
+        <img
+          [src]="processedImageUrl()"
+          class="results-processed-img"
+          alt="Object Detection Computer Vision Analysis Output"
+        />
+      </div>
+
+      <!-- Total Count Notification Hero Banner -->
+      @for (item of resultsList(); track item.item) {
+        @if ($first) {
+          <div class="total-counter-hero">
+            <span
+              class="flex items-center font-semibold tracking-wide uppercase text-xs text-slate-300"
+            >
+              <i class="fa-solid fa-chart-simple mr-2.5 text-sm text-emerald-400"></i>
+              <span>Pipeline Analysis Complete</span>
+            </span>
+            <span
+              class="font-mono bg-emerald-500/20 px-3 py-1 rounded-md text-emerald-300 font-bold border border-emerald-500/30"
+            >
+              Total Objects: {{ item.total_count_of_objects }}
+            </span>
+          </div>
+        }
+      }
+      <!-- Table Structure -->
+      <div class="results-table-wrapper">
+        <table class="results-table">
+          <thead class="results-thead">
+            <tr>
+              <th class="results-th">Class</th>
+              <th class="results-th">Instance Frequency</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of resultsList(); track item.item) {
+              <tr class="results-tr">
+                <td class="results-td capitalize font-mono text-slate-200">
+                  <i class="fa-solid fa-tag text-slate-700 text-[10px] mr-2"></i>{{ item.item }}
+                </td>
+                <td class="results-td text-right">
+                  <span class="results-td-badge">x{{ item.count }}</span>
+                </td>
+              </tr>
+            }
+            <!--No Classes Detected  -->
+            @empty {
+              <tr class="results-tr">
+                <td class="results-td text-slate-500 italic">
+                  No classes cataloged inside active canvas region
+                </td>
+                <td class="results-td text-right text-slate-500 font-mono">0</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Zero Objects Identified -->
+      @if (resultsList().length === 0) {
+        <div class="trouble-card">
+          <div class="trouble-header">
+            <div class="trouble-title-group">
+              <i class="fa-solid fa-circle-exclamation text-rose-500 text-base"></i>
+              <span class="text-rose-400 font-bold tracking-wide uppercase text-xs"
+                >No Target Classes Discovered</span
+              >
+            </div>
+            <i class="fa-solid fa-circle-xmark text-rose-500/40 text-lg"></i>
+          </div>
+          <ul class="trouble-list">
+            <li class="trouble-item">
+              Slide parameters down to relax confidence and strict filtering.
+            </li>
+            <li class="trouble-item">
+              Verify your active checklist contains class parameters matching the
+              <a [routerLink]="['/about']" class="hover-link">Supported Classes Directory</a>.
+            </li>
+            <li class="trouble-item">
+              Ensure the input source file offers sufficient focal lightning and clear feature
+              bounds.
+            </li>
+          </ul>
+        </div>
+      }
+    }
+    <!-- Default Fallback -->
+    @else {
+      <div class="fallback-viewport">
+        <i class="fa-solid fa-terminal text-2xl text-slate-800 mb-3 animate-pulse"></i>
+        <p class="font-medium">No processed inference metrics stream available yet.</p>
+      </div>
+    }
   </div>
-  }
 </div>
