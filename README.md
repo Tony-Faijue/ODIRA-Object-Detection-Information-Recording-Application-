@@ -14,6 +14,10 @@ ODIRA is a full stack computer vision application designed to process images and
 <img width="637" height="768" alt="About Section" src="https://github.com/user-attachments/assets/5e01b701-0bad-46b6-b446-997b37e57794" />
 
 ## Mobile Screenshots
+<img width="720" height="1600" alt="Screenshot_20260528-143701_Chrome" src="https://github.com/user-attachments/assets/f2cc9fec-b048-4daa-8bf7-85c260095d1b" />
+
+<img width="720" height="1600" alt="Screenshot_20260528-143928_Chrome" src="https://github.com/user-attachments/assets/fc16a85b-251a-4394-bccd-b7037685672d" />
+
 
 
 
