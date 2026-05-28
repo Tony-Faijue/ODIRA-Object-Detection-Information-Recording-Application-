@@ -6,6 +6,17 @@ ODIRA is a full stack computer vision application designed to process images and
 
 🌐 **Live Site:** [ODIRA](https://odira-object-detection-information.vercel.app/)
 
+## Desktop Screenshots
+<img width="780" height="872" alt="ODIRA Dashboard Top Section" src="https://github.com/user-attachments/assets/0aad175a-e818-4b4b-a20d-a01cc7fa97f6" />
+
+<img width="803" height="535" alt="ODIRA Dashboard Bottom Section" src="https://github.com/user-attachments/assets/79b768cb-fd27-4dd5-8e13-b5491a08947c" />
+
+<img width="637" height="768" alt="About Section" src="https://github.com/user-attachments/assets/5e01b701-0bad-46b6-b446-997b37e57794" />
+
+## Mobile Screenshots
+
+
+
 ---
 
 ## Key Features
