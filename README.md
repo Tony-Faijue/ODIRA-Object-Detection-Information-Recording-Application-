@@ -2,22 +2,21 @@
 
 ### Object Detection Information Recording Application (ODIRA)
 
-ODIRA is a full stack computer vision application designed to process images and record real time object classification analytics of them. The platform enables users to capture live images through webcam streams or static image files which returnes annotated results with bounding boxex, confidence scores and count of objects detected.
+ODIRA is a full stack computer vision web application that detects and classifies objects in real time. The platform enables users to capture live images through webcam streams or static image files which returns annotated results with bounding boxes, confidence scores and count of objects detected built solo from scratch and deployed live.
 
 🌐 **Live Site:** [ODIRA](https://odira-object-detection-information.vercel.app/)
 
 ## Desktop Screenshots
-<img width="780" height="872" alt="ODIRA Dashboard Top Section" src="https://github.com/user-attachments/assets/0aad175a-e818-4b4b-a20d-a01cc7fa97f6" />
+<img width="390" height="436" alt="ODIRA Dashboard Top Section" src="https://github.com/user-attachments/assets/0aad175a-e818-4b4b-a20d-a01cc7fa97f6" />
 
-<img width="803" height="535" alt="ODIRA Dashboard Bottom Section" src="https://github.com/user-attachments/assets/79b768cb-fd27-4dd5-8e13-b5491a08947c" />
+<img width="402" height="268" alt="ODIRA Dashboard Bottom Section" src="https://github.com/user-attachments/assets/79b768cb-fd27-4dd5-8e13-b5491a08947c" />
 
-<img width="637" height="768" alt="About Section" src="https://github.com/user-attachments/assets/5e01b701-0bad-46b6-b446-997b37e57794" />
+<img width="319" height="384" alt="About Section" src="https://github.com/user-attachments/assets/5e01b701-0bad-46b6-b446-997b37e57794" />
 
 ## Mobile Screenshots
-<img width="720" height="1600" alt="Screenshot_20260528-143701_Chrome" src="https://github.com/user-attachments/assets/f2cc9fec-b048-4daa-8bf7-85c260095d1b" />
+<img width="360" height="800" alt="Screenshot_20260528-143701_Chrome" src="https://github.com/user-attachments/assets/f2cc9fec-b048-4daa-8bf7-85c260095d1b" />
 
-<img width="720" height="1600" alt="Screenshot_20260528-143928_Chrome" src="https://github.com/user-attachments/assets/fc16a85b-251a-4394-bccd-b7037685672d" />
-
+<img width="360" height="800" alt="Screenshot_20260528-143928_Chrome" src="https://github.com/user-attachments/assets/fc16a85b-251a-4394-bccd-b7037685672d" />
 
 
 
@@ -148,6 +147,6 @@ Save changes and run both Angular and FastAPI again.
 
 ## 🐛 Bug Discovery & Issue Tracking
 
-This is my first real project so any contributions, optimizations and feedback are highly encouraged. If you experience any unexpected errors or behaviors:
+Any contributions, optimizations and feedback are highly encouraged. If you experience any unexpected errors or behaviors:
 
 👉 [Open a Structured GitHub Issue Ticket](https://github.com/Tony-Faijue/ODIRA-Object-Detection-Information-Recording-Application-/issues)
